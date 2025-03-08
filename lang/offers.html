@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{CurrentLang.IsoLang}}" culture="{{CurrentLang.CultureLang}}">
+<head>
+    <title>{{ResourcesTemplate.Offers_MenuTitle}} - {{CustomTitle}} - {{City}} - {{Country}}</title>
+    <meta name="description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}">
+    {{>CommonMetaTags}}
+    <link rel="canonical" href="{{UrlOffers}}" />
+    <meta property="og:url" content="{{UrlOffers}}" />
+    <meta property="og:title" content="{{ResourcesTemplate.Offers_MenuTitle}}" />
+    <meta property="og:image" content="{{#Photos.0}}{{UrlMedias}}/crop-300x200/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}}" />
+    <meta property="og:description" content="{{CustomTitle}} - {{ResourcesTemplate.Offers_OurOffers}}" />
+    {{>FaviconTags}}
+    {{>CommonStylesheets}}
+</head>
+<body>
+    {{{ScriptAnalytics}}}
+    {{{GoogleTagManagerBody}}}
+    {{>Header}}
+
+    <main>
+        <!-- SECTION BANNER -->
+        <section class="section-title-BG bg-img" style="background-image: url({{#Photos.0}}{{UrlMedias}}/crop-1600x400/{{IdMedia}}/{{FileNamePhoto}}{{/Photos.0}});" alt="{{NamePhoto}}">
+            <div class="opacity">
+                <div class="text-center">
+                    <h1 class="big-title">{{ResourcesTemplate.Offers_MenuTitle_5}}</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION OFFRES -->
+        {{^IsRestaurant}}
+        {{#HasPrestas}}
+        <section class="section">
+            <div class="content-section">
+
+                <div class="presta-big-contain presta-big-contain-in-others-pages">
+                    {{#Prestations}}
+                    <div class="presta-contain">
+                        {{#PhotosPresta.0}}
+                        <div class="img-presta-contain">
+                            <img class="bg-img" src="{{UrlMedias}}/crop-400x400/{{IdMedia}}/{{FileNamePhoto}}" alt="{{NamePhoto}}">
+
+                            <div class="opacity"></div>
+                        </div>
+                        {{/PhotosPresta.0}}
+
+                        <div class="infos-contain">
+                            <div class="title-and-duration title-and-duration-princial-presta">
+                                <h3>{{TitrePresta}}</h3>
+
+                                {{#isActivity}}
+                                {{#DurationPresta}}
+                                <div class="duration-presta">{{DurationResume}}</div>
+                                {{/DurationPresta}}
+                                {{/isActivity}}
+                            </div>
+
+                            <div class="link-btn-contain">
+                                <a href="{{UrlPrestaTemplate}}" class="link-btn" itemprop="url">{{ResourcesTemplate.SeeDetail}}<i class="las la-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/Prestations}}
+                </div>
+
+            </div>
+        </section>
+        {{/HasPrestas}}
+        {{/IsRestaurant}}
+
+    </main>
+
+    {{>Map}}
+    {{>Footer}}
+    {{>CommonScripts}}
+    
+</body>
+</html>
